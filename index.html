@@ -29,16 +29,18 @@
               brand: {
                 red: "#c1121f",
                 dark: "#0b0d10",
+                light: "#f7f8fb",
                 graphite: "#161a20",
                 gunmetal: "#232a33",
                 silver: "#c7cbd1",
+                foreground: "#0b0d10",
               },
             },
             boxShadow: {
-              glow: "0 0 0 1px rgba(193,18,31,.35), 0 20px 50px rgba(0,0,0,.35)",
+              glow: "0 0 0 1px rgba(193,18,31,.35), 0 20px 50px rgba(0,0,0,.08)",
             },
             backgroundImage: {
-              "hero-radial": "radial-gradient(circle at 20% 20%, rgba(193,18,31,.24), transparent 30%), radial-gradient(circle at 80% 10%, rgba(255,255,255,.08), transparent 28%), linear-gradient(135deg, #07080b 0%, #101419 55%, #0a0b0e 100%)",
+              "hero-radial": "radial-gradient(circle at 20% 20%, rgba(193,18,31,.12), transparent 30%), radial-gradient(circle at 80% 10%, rgba(17,20,24,.02), transparent 28%), linear-gradient(135deg, #fbfcfd 0%, #f3f6f9 55%, #eef2f6 100%)",
             },
           },
         },
@@ -66,11 +68,29 @@
       }
     </script>
   </head>
-  <body class="bg-brand-dark text-white font-sans antialiased selection:bg-brand-red selection:text-white">
+  <body class="bg-brand-light text-brand-foreground font-sans antialiased selection:bg-brand-red selection:text-white is-loading">
+    <div id="pageLoader" class="page-loader" aria-hidden="true">
+      <div class="page-loader__card">
+        <div class="page-loader__ring" aria-hidden="true"></div>
+        <div class="page-loader__brand">
+          <div class="page-loader__mark">
+            <svg viewBox="0 0 64 64" class="h-7 w-7 text-brand-red" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="7" />
+              <path d="M14 32h26" stroke="currentColor" stroke-width="12" stroke-linecap="round" />
+              <path d="M32 18l16 14-16 14" fill="currentColor" />
+            </svg>
+          </div>
+          <div>
+            <div class="page-loader__title">Kobowen Auto Workshop</div>
+            <div class="page-loader__subtitle">Preparing your premium experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="fixed inset-0 -z-10 bg-hero-radial"></div>
     <div class="fixed inset-0 -z-10 opacity-20" style="background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 48px 48px;"></div>
 
-    <div class="topbar border-b border-white/10 bg-black/30 backdrop-blur-xl">
+    <div class="topbar hidden border-b border-white/10 bg-black/30 backdrop-blur-xl lg:block">
       <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 text-sm text-white/80 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center gap-4">
           <span class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4 text-brand-red"></i>Nyakuron West Bol-Chan Road</span>
@@ -86,12 +106,12 @@
     <header class="sticky top-0 z-50 border-b border-white/10 bg-brand-dark/85 backdrop-blur-xl">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="#home" class="flex items-center gap-3">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full border border-brand-red/40 bg-brand-red/10 shadow-glow">
-            <svg viewBox="0 0 64 64" class="h-8 w-8 text-brand-red" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="32" cy="32" r="26" stroke="currentColor" stroke-width="4" />
-              <path d="M22 32h18" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-              <path d="M35 24l10 8-10 8" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <div class="logo-badge flex h-12 w-12 items-center justify-center rounded-full shadow-glow">
+              <svg viewBox="0 0 64 64" class="h-8 w-8 text-brand-red" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="7" />
+                <path d="M14 32h26" stroke="currentColor" stroke-width="12" stroke-linecap="round" />
+                <path d="M32 18l16 14-16 14" fill="currentColor" />
+              </svg>
           </div>
           <div>
             <div class="font-display text-lg font-semibold tracking-wide">Kobowen Auto Workshop</div>
@@ -119,7 +139,7 @@
         </button>
       </div>
 
-      <div id="mobileMenu" class="mobile-menu hidden border-t border-white/10 bg-brand-dark/95 px-4 py-4 lg:hidden sm:px-6">
+        <div id="mobileMenu" class="mobile-menu hidden border-t border-white/10 bg-brand-dark/95 px-4 py-4 lg:hidden sm:px-6">
         <div class="flex flex-col gap-4">
           <a class="mobile-link" href="#services">Services</a>
           <a class="mobile-link" href="#diagnostics">Diagnostics</a>
@@ -132,47 +152,48 @@
     </header>
 
     <main id="home">
-      <section class="relative overflow-hidden">
-        <div class="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=80" alt="Premium automotive workshop interior" class="h-full w-full object-cover opacity-25" />
-          <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/35"></div>
+      <section class="hero-shell relative overflow-hidden">
+        <div class="hero-background absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=80" alt="Premium automotive workshop interior" class="h-full w-full object-cover opacity-18" />
+          <div class="absolute inset-0 bg-gradient-to-r from-[#f8fafc] via-[#f8fafc]/96 to-[#eef3f8]/92"></div>
+          <div class="absolute inset-0 hero-noise"></div>
         </div>
-        <div class="mx-auto grid min-h-[92vh] max-w-7xl items-center gap-14 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
+        <div class="mx-auto grid min-h-auto max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 md:py-16 lg:min-h-[92vh] lg:grid-cols-[1.08fr_0.92fr] lg:px-8 lg:py-18">
           <div class="relative z-10 max-w-3xl" data-aos="fade-up" data-aos-duration="900">
-            <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-md">
+            <div class="hero-badge mb-6 inline-flex items-center gap-3 rounded-full px-4 py-2 text-sm backdrop-blur-md">
               <span class="h-2.5 w-2.5 rounded-full bg-brand-red shadow-[0_0_24px_rgba(193,18,31,.9)]"></span>
               Premium automotive diagnostics, maintenance, repairs, and branding
             </div>
-            <h1 class="font-display text-5xl font-bold leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 class="hero-title font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
               Precision.
               <span class="block text-brand-red">Performance.</span>
               Reliability.
             </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/75 sm:text-xl">
+            <p class="hero-copy mt-6 max-w-2xl text-lg leading-8 sm:text-xl">
               Professional automotive diagnostics, maintenance, repairs, branding, inspections, valuation, and premium vehicle care services designed for drivers and fleets that expect more.
             </p>
             <div class="mt-8 flex flex-col gap-4 sm:flex-row">
               <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-red px-7 py-4 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand-red/90 hover:shadow-glow">
                 <i data-lucide="calendar-plus" class="h-5 w-5"></i>Book Service
               </a>
-              <a href="#services" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10">
+              <a href="#services" class="hero-secondary inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-semibold transition hover:-translate-y-0.5">
                 <i data-lucide="arrow-right" class="h-5 w-5"></i>Explore Services
               </a>
             </div>
-            <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <div class="glass-card p-4">
+            <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+              <div class="hero-stat glass-card p-4">
                 <div class="stat-number" data-counter="12800">0</div>
                 <div class="mt-1 text-sm text-white/60">Vehicles Serviced</div>
               </div>
-              <div class="glass-card p-4">
+              <div class="hero-stat glass-card p-4">
                 <div class="stat-number" data-counter="14">0</div>
                 <div class="mt-1 text-sm text-white/60">Years Experience</div>
               </div>
-              <div class="glass-card p-4">
+              <div class="hero-stat glass-card p-4">
                 <div class="stat-number" data-counter="98">0</div>
                 <div class="mt-1 text-sm text-white/60">Satisfaction %</div>
               </div>
-              <div class="glass-card p-4">
+              <div class="hero-stat glass-card p-4">
                 <div class="stat-number" data-counter="4200">0</div>
                 <div class="mt-1 text-sm text-white/60">Diagnostics Run</div>
               </div>
@@ -180,23 +201,23 @@
           </div>
 
           <div class="relative z-10" data-aos="fade-left" data-aos-duration="900">
-            <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur-2xl">
-              <div class="absolute inset-0 bg-gradient-to-br from-brand-red/15 via-transparent to-transparent"></div>
+            <div class="hero-panel relative overflow-hidden rounded-[2rem] p-4 shadow-2xl backdrop-blur-2xl">
+              <div class="absolute inset-0 bg-gradient-to-br from-brand-red/10 via-transparent to-transparent"></div>
               <div class="relative overflow-hidden rounded-[1.5rem] border border-white/10">
-                <img src="enginehoist.jpg" alt="Luxury performance car in workshop" class="h-[34rem] w-full object-cover" />
+                <img src="enginehoist.jpg" alt="Luxury performance car in workshop" class="h-[20rem] w-full object-cover sm:h-[26rem] lg:h-[34rem]" />
               </div>
-              <div class="relative mt-4 grid gap-4 sm:grid-cols-2">
-                <div class="glass-card p-4">
+              <div class="relative mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4">
+                <div class="hero-stat glass-card p-4">
                   <div class="text-xs uppercase tracking-[0.3em] text-white/45">Current focus</div>
                   <div class="mt-2 text-lg font-semibold">Advanced diagnostics and precision repair</div>
                 </div>
-                <div class="glass-card p-4">
+                <div class="hero-stat glass-card p-4">
                   <div class="text-xs uppercase tracking-[0.3em] text-white/45">Fast response</div>
                   <div class="mt-2 text-lg font-semibold">Booking, inspection, and valuation support</div>
                 </div>
               </div>
             </div>
-            <div class="absolute -bottom-8 -left-6 hidden rounded-2xl border border-white/10 bg-brand-dark/90 p-4 shadow-2xl backdrop-blur-xl lg:block">
+            <div class="hero-chip absolute -bottom-8 -left-6 hidden rounded-2xl p-4 shadow-2xl backdrop-blur-xl lg:block">
               <div class="flex items-center gap-3">
                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/15 text-brand-red"><i data-lucide="wrench" class="h-6 w-6"></i></div>
                 <div>
@@ -282,9 +303,9 @@
             <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl">
               <div class="absolute inset-0 bg-gradient-to-br from-brand-red/20 via-transparent to-transparent"></div>
               <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1600&q=80" alt="Automotive diagnostic workstation" class="relative h-[28rem] w-full rounded-[1.5rem] object-cover" />
-              <div class="diag-panel left-5 top-5"><i data-lucide="cpu" class="h-4 w-4"></i> ECU analysis</div>
-              <div class="diag-panel right-5 top-20"><i data-lucide="wireless" class="h-4 w-4"></i> Live data stream</div>
-              <div class="diag-panel bottom-6 left-8"><i data-lucide="triangle-alert" class="h-4 w-4"></i> Fault code mapping</div>
+              <div class="diag-panel hidden lg:inline-flex left-5 top-5"><i data-lucide="cpu" class="h-4 w-4"></i> ECU analysis</div>
+              <div class="diag-panel hidden lg:inline-flex right-5 top-20"><i data-lucide="wireless" class="h-4 w-4"></i> Live data stream</div>
+              <div class="diag-panel hidden lg:inline-flex bottom-6 left-8"><i data-lucide="triangle-alert" class="h-4 w-4"></i> Fault code mapping</div>
             </div>
           </div>
         </div>
@@ -453,15 +474,15 @@
     </main>
 
     <footer class="border-t border-white/10 bg-black/40">
-      <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr_0.85fr] lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1.15fr_0.85fr_0.85fr] lg:px-8">
         <div>
           <div class="flex items-center gap-3">
-            <div class="flex h-12 w-12 items-center justify-center rounded-full border border-brand-red/40 bg-brand-red/10 shadow-glow">
-              <svg viewBox="0 0 64 64" class="h-8 w-8 text-brand-red" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="32" cy="32" r="26" stroke="currentColor" stroke-width="4" />
-                <path d="M22 32h18" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-                <path d="M35 24l10 8-10 8" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+                <div class="logo-badge flex h-12 w-12 items-center justify-center rounded-full shadow-glow">
+                  <svg viewBox="0 0 64 64" class="h-8 w-8 text-brand-red" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="7" />
+                    <path d="M14 32h26" stroke="currentColor" stroke-width="12" stroke-linecap="round" />
+                    <path d="M32 18l16 14-16 14" fill="currentColor" />
+                  </svg>
             </div>
             <div>
               <div class="font-display text-xl font-semibold">Kobowen Auto Workshop</div>

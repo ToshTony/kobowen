@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const loader = document.getElementById('pageLoader');
   const menuButton = document.getElementById('menuButton');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -98,4 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   lucide.createIcons();
+
+  const dismissLoader = () => {
+    document.body.classList.remove('is-loading');
+    if (loader) {
+      loader.remove();
+    }
+  };
+
+  window.setTimeout(dismissLoader, 600);
 });
